@@ -1,0 +1,9 @@
+{
+    led_strip: ws2812 {
+        compatible = "zmk,ws2812";
+        pin = <&gpio0 13>;        // 🔁 Replace 13 with your actual GPIO pin used for DIN
+        num-leds = <58>;
+        color-order = <1 0 2>;    // GRB is most common; test and adjust if needed
+        status = "okay";
+    };
+};
