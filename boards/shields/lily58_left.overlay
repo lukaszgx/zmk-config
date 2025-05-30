@@ -1,9 +1,16 @@
-{
-    led_strip: ws2812 {
-        compatible = "zmk,ws2812";
-        pin = <&gpio0 13>;        // 🔁 Replace 13 with your actual GPIO pin used for DIN
-        num-leds = <58>;
-        color-order = <1 0 2>;    // GRB is most common; test and adjust if needed
+/ {
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        label = "LED";
+        spi-max-frequency = <8000000>;
+        reg = <0>;
+        color-order = <RGB>;
+        chain-length = <58>;
         status = "okay";
     };
+};
+
+&spi1 {
+    status = "okay";
+    cs-gpios = <&gpio0 17 GPIO_ACTIVE_LOW>;  // Update pin to match your wiring
 };
